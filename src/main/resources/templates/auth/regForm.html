@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="fragments/layout :: layout (~{::title}, ~{::section})">
+<head>
+    <title>Регистрация</title>
+</head>
+<body>
+<section>
+
+    <div class="container">
+        <h3>Регистрация</h3>
+        <div class="row">
+            <div class="col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-2">
+
+                <div th:if="${errorMessage}" th:text="${errorMessage}" class="has-error"></div>
+
+                <!--/*@thymesVar id="user" type="ru.tshagaev.skblabtest.domain.auth.User"*/-->
+                <form name="form" th:action="@{/auth/register}" th:object="${user}" action="#" method="post" class="form-signin form-horizontal">
+
+                    <fieldset>
+                        <ul th:if="${#fields.hasErrors('*')}">
+                            <li th:each="err : ${#fields.errors('*')}" th:text="${err}">Error description</li>
+                        </ul>
+                        <div class="form-group" th:classappend="${#fields.hasErrors('username')} ? 'has-error'">
+                            <label for="username" class="col-lg-4 control-label">Логин</label>
+                            <div class="col-lg-8">
+                                <input id="username" type="text" th:field="*{username}" th:errorclass="'has-error'" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="form-group" th:classappend="${#fields.hasErrors('firstName')} ? 'has-error'">
+                            <label for="firstName" class="col-lg-4 control-label">Имя</label>
+                            <div class="col-lg-8">
+                                <input id="firstName" type="text" th:field="*{firstName}" th:errorclass="'has-error'" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="form-group" th:classappend="${#fields.hasErrors('midName')} ? 'has-error'">
+                            <label for="midName" class="col-lg-4 control-label">Отчество</label>
+                            <div class="col-lg-8">
+                                <input id="midName" type="text" th:field="*{midName}" th:errorclass="'has-error'" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="form-group" th:classappend="${#fields.hasErrors('lastName')} ? 'has-error'">
+                            <label for="lastName" class="col-lg-4 control-label">Фамилия</label>
+                            <div class="col-lg-8">
+                                <input id="lastName" type="text" th:field="*{lastName}" th:errorclass="'has-error'" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="form-group" th:classappend="${#fields.hasErrors('email')} ? 'has-error'">
+                            <label for="email" class="control-label">Адрес электронной почты</label>
+                            <div class="col-lg-8">
+                                <input id="email" type="email" title="E-mail" th:field="*{email}" th:errorclass="'has-error'" class="form-control"/>
+                            </div>
+                        </div>
+
+                        <div class="form-group" th:classappend="${#fields.hasErrors('password')} ? 'has-error'">
+                            <label for="password" class="col-lg-4 control-label">Пароль</label>
+                            <div class="col-lg-8">
+                                <input id="password" type="password" th:field="*{password}" th:errorclass="'has-error'" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="form-group" th:classappend="${#fields.hasErrors('passwordConfirmation')} ? 'has-error'">
+                            <label for="passwordConfirmation" class="col-lg-4 control-label">Повторите пароль</label>
+                            <div class="col-lg-8">
+                                <input id="passwordConfirmation" type="password" th:field="*{passwordConfirmation}" th:errorclass="'has-error'" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <button class="btn btn-md btn-primary btn-block" type="submit">Зарегистрировать</button>
+                            </div>
+                            <div class="col">
+                                <a th:href="@{/}" class="btn btn-secondary">Отменить</a>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+</section>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="fragments/layout :: layout (~{::title}, ~{::section})">
+<head>
+    <title>Успешная регистрация</title>
+</head>
+<body>
+<section>
+
+    <div class="container">
+        <h6 class="alert alert-success">Учетная запись создана и отправлена на проверку. Результат будет отправлен на указанный адрес электронной почты.</h6>
+        <a href="/" th:href="@{/}">На главную</a>
+    </div>
+
+</section>
+</body>
+</html>

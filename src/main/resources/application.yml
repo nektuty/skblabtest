@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: Test Spring Boot project for SKB Lab
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:file:~/h2-db
+    username: admin
+    password: admin
+
+  jpa:
+    database: h2
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+
+  thymeleaf:
+    cache: false
